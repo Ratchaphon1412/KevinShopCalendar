@@ -16,6 +16,14 @@ class ProductView(APIView):
         return Response(serializer.data)
 
 
+class ProductDetailView(APIView):
+
+    def get(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data)
+
+
 class CartView(APIView):
 
     def get(self, request):
